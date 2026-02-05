@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar System Explorer - Home</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #000;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 20px 50px;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            align-items: center;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 5px;
+        }
+
+        nav ul li a:hover {
+            background: rgba(100, 150, 255, 0.2);
+            color: #66b3ff;
+        }
+
+        nav .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #66b3ff;
+            margin-right: auto;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: radial-gradient(ellipse at center, #0f1b3d 0%, #000000 100%);
+        }
+
+        .stars-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 72px;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #66b3ff, #00ffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content p {
+            font-size: 24px;
+            margin-bottom: 40px;
+            color: #b3d9ff;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(45deg, #1e5fa8, #66b3ff);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 25px rgba(102, 179, 255, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 35px rgba(102, 179, 255, 0.6);
+        }
+
+        /* Planets Grid Section */
+        .planets-section {
+            padding: 100px 50px;
+            background: linear-gradient(180deg, #000000 0%, #0a0e27 50%, #000000 100%);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 48px;
+            margin-bottom: 60px;
+            color: #66b3ff;
+        }
+
+        .planets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .planet-card {
+            background: rgba(10, 20, 40, 0.6);
+            border: 1px solid rgba(100, 150, 255, 0.3);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .planet-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(102, 179, 255, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .planet-card:hover::before {
+            opacity: 1;
+        }
+
+        .planet-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 40px rgba(102, 179, 255, 0.3);
+            border-color: #66b3ff;
+        }
+
+        .planet-image {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            position: relative;
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .planet-card:hover .planet-image {
+            animation-play-state: paused;
+        }
+
+        .planet-card h3 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: #66b3ff;
+        }
+
+        .planet-card p {
+            color: #b3d9ff;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .explore-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 25px;
+            background: rgba(102, 179, 255, 0.2);
+            border: 1px solid #66b3ff;
+            color: #66b3ff;
+            text-decoration: none;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .explore-btn:hover {
+            background: rgba(102, 179, 255, 0.4);
+            transform: scale(1.05);
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 100px 50px;
+            background: #000;
+            text-align: center;
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .about-content h2 {
+            font-size: 48px;
+            margin-bottom: 30px;
+            color: #66b3ff;
+        }
+
+        .about-content p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #b3d9ff;
+            margin-bottom: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 40px 50px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer p {
+            color: #b3d9ff;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 48px;
+            }
+
+            .hero-content p {
+                font-size: 18px;
+            }
+
+            .section-title {
+                font-size: 36px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li class="logo">🌌 Solar System Explorer</li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="3d-view.html">3D View</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="facts.html">Facts</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="stars-bg" id="stars"></div>
+        <div class="hero-content">
+            <h1>Explore Our Solar System</h1>
+            <p>Journey through space and discover the wonders of our cosmic neighborhood</p>
+            <a href="3d-view.html" class="cta-button">Start Exploring</a>
+        </div>
+    </section>
+
+    <!-- Planets Section -->
+    <section class="planets-section">
+        <h2 class="section-title">Discover the Planets</h2>
+        <div class="planets-grid">
+            <!-- Mercury -->
+            <div class="planet-card" onclick="window.location.href='planet-details.html?planet=mercury'">
+                <div class="planet-image" style="background: radial-gradient(circle at 30% 30%, #b8a899, #8c7853, #5c4a3a); box-shadow: 0 0 30px rgba(140, 120, 83, 0.5);">
+                </div>
+                <h3>Mercury</h3>
+                <p>The smallest planet and closest to the Sun. A rocky world with extreme temperatures.</p>
+                <a href="planet-details.html?planet=mercury" class="explore-btn">Explore Mercury</a>
+            </div>
+
+            <!-- Venus -->
+            <div class="planet-card" onclick="window.location.href='planet-details.html?planet=venus'">
+                <div class="planet-image" style="background: radial-gradient(circle at 30% 30%, #ffd873, #ffc649, #e6ac3a); box-shadow: 0 0 30px rgba(255, 198, 73, 0.5);">
+                </div>
+                <h3>Venus</h3>
+                <p>Earth's "sister planet" with a toxic atmosphere and surface hot enough to melt lead.</p>
+                <a href="planet-details.html?planet=venus" class="explore-btn">Explore Venus</a>
+            </div>
+
+            <!-- Earth -->
+            <div class="planet-card" onclick="window.location.href='planet-details.html?planet=earth'">
+                <div class="planet-image" style="background: radial-gradient(circle at 30% 30%, #6db3f2, #4a9eff, #1e5fa8); box-shadow: 0 0 30px rgba(74, 158, 255, 0.5);">
+                </div>
+                <h3>Earth</h3>
+                <p>Our home planet. The only known world with life and liquid water on its surface.</p>
+                <a href="planet-details.html?planet=earth" class="explore-btn">Explore Earth</a>
+            </div>
+
+            <!-- Mars -->
+            <div class="planet-card" onclick="window.location.href='planet-details.html?planet=mars'">
+                <div class="planet-image" style="background: radial-gradient(circle at 30% 30%, #f49e7c, #e27b58, #c1440e); box-shadow: 0 0 30px rgba(226, 123, 88, 0.5);">
+                </div>
+                <h3>Mars</h3>
+                <p>The Red Planet. Home to the largest volcano and canyon in our solar system.</p>
+                <a href="planet-details.html?planet=mars" class="explore-btn">Explore Mars</a>
+            </div>
+
+            <!-- Jupiter -->
+            <div class="planet-card" onclick="window.location.href='planet-details.html?planet=jupiter'">
+                <div class="planet-image" style="background: radial-gradient(circle at 30% 30%, #e8c88f, #c88b3a, #a67c52); box-shadow: 0 0 30px rgba(200, 139, 58, 0.5);">
+                </div>
+                <h3>Jupiter</h3>
+                <p>The largest planet. A gas giant with a massive storm called the Great Red Spot.</p>
+                <a href="planet-details.html?planet=jupiter" class="explore-btn">Explore Jupiter</a>
+            </div>
+
+            <!-- Saturn -->
+            <div class="planet-card" onclick="window.location.href='planet-details.html?planet=saturn'">
+                <div class="planet-image" style="background: radial-gradient(circle at 30% 30%, #fce8c7, #fad5a5, #c9a96e); box-shadow: 0 0 30px rgba(250, 213, 165, 0.5);">
+                </div>
+                <h3>Saturn</h3>
+                <p>The ringed planet. Famous for its spectacular system of icy rings.</p>
+                <a href="planet-details.html?planet=saturn" class="explore-btn">Explore Saturn</a>
+            </div>
+
+            <!-- Uranus -->
+            <div class="planet-card" onclick="window.location.href='planet-details.html?planet=uranus'">
+                <div class="planet-image" style="background: radial-gradient(circle at 30% 30%, #7ee8f5, #4fd0e7, #3ba7bb); box-shadow: 0 0 30px rgba(79, 208, 231, 0.5);">
+                </div>
+                <h3>Uranus</h3>
+                <p>The ice giant that rotates on its side. Has a beautiful blue-green color.</p>
+                <a href="planet-details.html?planet=uranus" class="explore-btn">Explore Uranus</a>
+            </div>
+
+            <!-- Neptune -->
+            <div class="planet-card" onclick="window.location.href='planet-details.html?planet=neptune'">
+                <div class="planet-image" style="background: radial-gradient(circle at 30% 30%, #5f7fff, #4166f5, #2d4a9e); box-shadow: 0 0 30px rgba(65, 102, 245, 0.5);">
+                </div>
+                <h3>Neptune</h3>
+                <p>The windiest planet in our solar system. A deep blue ice giant.</p>
+                <a href="planet-details.html?planet=neptune" class="explore-btn">Explore Neptune</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="about-content">
+            <h2>About Our Solar System</h2>
+            <p>
+                Our solar system formed about 4.6 billion years ago from a giant rotating cloud of gas and dust. 
+                At its center is our Sun, a star that contains 99.8% of the solar system's mass.
+            </p>
+            <p>
+                Eight planets orbit the Sun, along with countless asteroids, comets, and other celestial bodies. 
+                Each planet is unique, from the scorching surface of Mercury to the frigid storms of Neptune.
+            </p>
+            <p>
+                Use this website to explore each planet in detail, view them in 3D, and learn fascinating facts 
+                about our cosmic neighborhood.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Solar System Explorer. Journey through the cosmos.</p>
+    </footer>
+
+    <script>
+        // Generate stars
+        function generateStars() {
+            const starsContainer = document.getElementById('stars');
+            const starCount = 200;
+
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                const size = Math.random() * 3 + 1;
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                
+                starsContainer.appendChild(star);
+            }
+        }
+
+        generateStars();
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
