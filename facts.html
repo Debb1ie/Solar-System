@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facts - Solar System Explorer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(180deg, #000000 0%, #0a0e27 50%, #000000 100%);
+            color: white;
+            min-height: 100vh;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 20px 50px;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            align-items: center;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 5px;
+        }
+
+        nav ul li a:hover {
+            background: rgba(100, 150, 255, 0.2);
+            color: #66b3ff;
+        }
+
+        nav .logo {
+            font-size: 20px;
+            font-weight: bold;
+            color: #66b3ff;
+            margin-right: auto;
+        }
+
+        .facts-container {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 50px;
+        }
+
+        .facts-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .facts-header h1 {
+            font-size: 64px;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #66b3ff, #00ffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .facts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .fact-card {
+            background: rgba(10, 20, 40, 0.6);
+            border: 1px solid rgba(100, 150, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .fact-card:hover {
+            transform: translateY(-10px);
+            border-color: #66b3ff;
+            box-shadow: 0 10px 40px rgba(102, 179, 255, 0.3);
+        }
+
+        .fact-card .icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .fact-card h3 {
+            font-size: 24px;
+            color: #66b3ff;
+            margin-bottom: 15px;
+        }
+
+        .fact-card p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #b3d9ff;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 40px 50px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 80px;
+        }
+
+        footer p {
+            color: #b3d9ff;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li class="logo">🌌 Solar System Explorer</li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="3d-view.html">3D View</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="facts.html">Facts</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+
+    <div class="facts-container">
+        <div class="facts-header">
+            <h1>Amazing Space Facts</h1>
+            <p style="font-size: 20px; color: #b3d9ff;">Discover the wonders of our solar system</p>
+        </div>
+
+        <div class="facts-grid">
+            <div class="fact-card">
+                <div class="icon">🌞</div>
+                <h3>The Sun's Mass</h3>
+                <p>The Sun contains 99.86% of the total mass in our solar system. All the planets, moons, asteroids, and comets combined make up just 0.14%!</p>
+            </div>
+
+            <div class="fact-card">
+                <div class="icon">⚡</div>
+                <h3>Lightning on Jupiter</h3>
+                <p>Jupiter's lightning bolts are up to 3 times more energetic than Earth's lightning, and some storms can be larger than our entire planet!</p>
+            </div>
+
+            <div class="fact-card">
+                <div class="icon">🌊</div>
+                <h3>Water in Space</h3>
+                <p>There's more water in Europa's subsurface ocean than in all of Earth's oceans combined. It might harbor alien life!</p>
+            </div>
+
+            <div class="fact-card">
+                <div class="icon">🏔️</div>
+                <h3>Olympus Mons</h3>
+                <p>Mars' Olympus Mons is the tallest volcano in the solar system at 21 kilometers high - almost 3 times taller than Mount Everest!</p>
+            </div>
+
+            <div class="fact-card">
+                <div class="icon">💨</div>
+                <h3>Fastest Winds</h3>
+                <p>Neptune has the fastest winds in the solar system, reaching speeds of 2,100 km/h - faster than the speed of sound on Earth!</p>
+            </div>
+
+            <div class="fact-card">
+                <div class="icon">🌡️</div>
+                <h3>Temperature Extremes</h3>
+                <p>Mercury has the most extreme temperature range: -173°C at night to 427°C during the day - a swing of 600 degrees!</p>
+            </div>
+
+            <div class="fact-card">
+                <div class="icon">🪐</div>
+                <h3>Saturn's Rings</h3>
+                <p>Saturn's rings are incredibly thin - they span up to 282,000 km but are only about 10 meters thick! If you made a scale model, they'd be thinner than paper.</p>
+            </div>
+
+            <div class="fact-card">
+                <div class="icon">⏰</div>
+                <h3>A Day on Venus</h3>
+                <p>A day on Venus (one rotation) takes 243 Earth days, but a year (one orbit) takes only 225 Earth days. Days are longer than years!</p>
+            </div>
+
+            <div class="fact-card">
+                <div class="icon">🌍</div>
+                <h3>Earth's Uniqueness</h3>
+                <p>Earth is the only planet in our solar system where water exists in all three states: solid (ice), liquid (water), and gas (vapor).</p>
+            </div>
+
+            <div class="fact-card">
+                <div class="icon">🌙</div>
+                <h3>The Moon is Leaving</h3>
+                <p>The Moon is slowly moving away from Earth at about 3.8 cm per year. In the distant future, total solar eclipses will no longer be possible!</p>
+            </div>
+
+            <div class="fact-card">
+                <div class="icon">💎</div>
+                <h3>Diamond Rain</h3>
+                <p>Scientists believe it rains diamonds on Neptune and Uranus! The intense pressure deep in their atmospheres could compress carbon into diamonds.</p>
+            </div>
+
+            <div class="fact-card">
+                <div class="icon">🔴</div>
+                <h3>The Great Red Spot</h3>
+                <p>Jupiter's Great Red Spot is a storm that has been raging for at least 400 years! It's so large that 2-3 Earths could fit inside it.</p>
+            </div>
+
+            <div class="fact-card">
+                <div class="icon">🌌</div>
+                <h3>Space is Silent</h3>
+                <p>There's no sound in space because there's no air for sound waves to travel through. Explosions in space would be completely silent!</p>
+            </div>
+
+            <div class="fact-card">
+                <div class="icon">🚀</div>
+                <h3>Speed of Earth</h3>
+                <p>Earth is hurtling through space at about 107,000 km/h as it orbits the Sun. That's fast enough to circle the globe in about 7 minutes!</p>
+            </div>
+
+            <div class="fact-card">
+                <div class="icon">🌟</div>
+                <h3>Solar Eclipses</h3>
+                <p>The reason we get perfect solar eclipses is pure coincidence - the Sun is 400 times larger than the Moon but also 400 times farther away!</p>
+            </div>
+
+            <div class="fact-card">
+                <div class="icon">❄️</div>
+                <h3>Ice on Mercury</h3>
+                <p>Despite being the closest planet to the Sun, Mercury has ice in permanently shadowed craters at its poles where temperatures never rise above -173°C!</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Solar System Explorer. Journey through the cosmos.</p>
+    </footer>
+</body>
+</html>
